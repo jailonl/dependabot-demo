@@ -1,0 +1,27 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      # Keep mkdirp on 0.x: v1+ changed the API. Ignore rules apply to
+      # version updates only; security updates can still bump it.
+      - dependency-name: "mkdirp"
+        update-types: ["version-update:semver-major"]
+    # Cooldown applies to version updates only (not security updates).
+    cooldown:
+      default-days: 3
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3
