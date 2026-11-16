@@ -9,7 +9,7 @@
   "keywords": [],
   "type": "commonjs",
   "dependencies": {
-    "lodash": "4.17.15",
+    "lodash": "4.18.1",
     "minimist": "1.2.0",
     "mkdirp": "0.5.1"
   }
